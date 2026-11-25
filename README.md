@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pratap Mahalingam — Studio Portfolio
 
-## Getting Started
+An animation-first portfolio: a real-time 3D glass sculpture, pinned and scrubbed scroll scenes, a pinned horizontal project gallery, shared-element transitions into 13 case studies, and tone shifts between sections.
 
-First, run the development server:
+**Stack:** Next.js 16 (App Router, Turbopack) · React 19 · TypeScript · Tailwind CSS v4 · GSAP + ScrollTrigger + SplitText · Lenis · Three.js / React Three Fiber / Drei · Motion · Lucide
+
+## Run locally
+
+Requires Node.js 20.9 or newer.
+
+```bash
+npm install
+```
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Checks before deploying
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npx tsc --noEmit && npm run lint && npm run build
+```
 
-## Learn More
+## Editing content
 
-To learn more about Next.js, take a look at the following resources:
+| What | File |
+|---|---|
+| Name, headline, intro, links, roles | `src/lib/profile.ts` |
+| Experience, education, skills | `src/lib/profile.ts` |
+| The 13 projects (text, metrics, figures, links) | `src/lib/projects.ts` |
+| Project figures | `public/work/<slug>/` |
+| Resume PDF | `public/Pratap_Mahalingam_Resume.pdf` |
+| Social preview image | `public/og-image.jpg` |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Fallbacks
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Reduced motion** (OS setting): no preloader, no pinning, no smooth scroll; the 3D scene is replaced by a still image.
+- **No WebGL, or a slow GPU**: the same still image. `PerformanceMonitor` switches to it if the frame rate stays low.
+- **Touch devices**: native scrolling, a lighter 3D scene and a vertical project stack.
+- **JavaScript disabled**: all content is rendered in the server HTML and stays visible.
 
-## Deploy on Vercel
+## Deploy (Vercel)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Import this repository at https://vercel.com/new. The framework preset is detected as Next.js; no settings need changing.
+2. Optional: set `NEXT_PUBLIC_SITE_URL` (for example `https://your-domain.com`) if you attach a custom domain. Otherwise social-preview URLs use the Vercel production domain automatically.
