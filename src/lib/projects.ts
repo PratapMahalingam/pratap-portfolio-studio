@@ -256,10 +256,10 @@ export const projects: Project[] = [
   {
     slug: "motor-cortex-spike-trains",
     title: "Motor Cortex Spike Trains",
-    kicker: "Single-neuron analysis of motor planning",
+    kicker: "Single-neuron analysis of lick-direction selectivity",
     categories: ["Research"],
     metric: { value: "64%", label: "direction-selective, vs 4%" },
-    summary: "Finding the plan for a movement in single neurons, before the movement happens.",
+    summary: "Finding lick-direction signals in single neurons before the movement happens.",
     problem:
       "In a delayed-response task, a mouse feels a pole, waits, then licks left or right on a go cue. The question is how many motor-cortex neurons already fire differently for lick-left and lick-right trials during the wait.",
     approach: [
