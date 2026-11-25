@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import Magnetic from "@/components/Magnetic";
-import SculptureStage from "@/components/SculptureStage";
+import FlowField from "@/components/FlowField";
 import CopyEmail from "@/components/CopyEmail";
 import { profile } from "@/lib/profile";
 
@@ -10,10 +10,10 @@ export const metadata: Metadata = { title: "Contact", description: "Get in touch
 export default function ContactPage() {
   return (
     <section data-tone="blue" className="relative min-h-[100svh] wrap pt-36 pb-12 flex flex-col justify-between overflow-hidden" data-testid="contact">
-      <SculptureStage mode="contact" className="pointer-events-none absolute inset-0 z-0 opacity-80" />
+      <div className="pointer-events-none absolute inset-0 z-0"><FlowField mode="contact" /></div>
       <div className="relative z-10">
         <p className="mono dim mb-6">Contact</p>
-        <Reveal as="h1" by="chars" onLoad delay={0.15} className="display text-[clamp(3rem,10vw,11rem)] max-w-[12ch]">Let&apos;s turn data into decisions.</Reveal>
+        <Reveal as="h1" by="chars" onLoad delay={0.15} className="display text-[clamp(2.28rem,7.6vw,8.36rem)] max-w-[12ch]">Let&apos;s turn data into decisions.</Reveal>
       </div>
       <div className="relative z-10 mt-16 grid gap-10 md:grid-cols-[1fr_auto] items-end">
         <div className="grid gap-4">

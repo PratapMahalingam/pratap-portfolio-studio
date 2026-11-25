@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { scene } from "@/lib/sceneStore";
 
 // A short counter and a curtain, once per visit (about 1.4 s). Afterwards the
-// sculpture rises out of depth and the page announces "intro:done".
+// flow field spreads out from the centre and the page announces "intro:done".
 export default function Preloader() {
   const [show, setShow] = useState(true);
   const root = useRef<HTMLDivElement>(null);

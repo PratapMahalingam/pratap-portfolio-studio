@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
-import { ArrowDown } from "lucide-react";
 import Magnetic from "../Magnetic";
 import { profile } from "@/lib/profile";
 import { scene } from "@/lib/sceneStore";
@@ -14,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
 // Full-screen hero. On load: the headline rises line by line (masked), copy and
 // actions fade in. On scroll: the hero pins, the lines drift apart, the copy
-// lifts away and the sculpture (via the scene store) turns and moves to centre.
+// lifts away and the flow field (via the scene store) begins to turn.
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
   useGSAP(
@@ -61,7 +60,7 @@ export default function Hero() {
   );
 
   return (
-    <section ref={root} data-tone="dark" className="relative min-h-[100svh] wrap pt-28 pb-10 flex flex-col justify-between overflow-hidden" aria-labelledby="hero-title" data-testid="hero">
+    <section ref={root} id="intro" data-guide="Intro" data-tone="dark" className="relative min-h-[100svh] wrap pt-28 pb-10 md:pb-24 flex flex-col justify-between overflow-hidden" aria-labelledby="hero-title" data-testid="hero">
       <div data-hero-out>
         <div className="flex flex-wrap justify-between gap-6" data-hero-fade>
           <p className="mono dim max-w-[22ch]">{profile.focus}</p>
@@ -70,7 +69,7 @@ export default function Hero() {
       </div>
 
       <div data-hero-title className="origin-left">
-        <h1 id="hero-title" className="display text-[clamp(3.2rem,10.4vw,12.5rem)]" aria-label={profile.headline.join(" ")}>
+        <h1 id="hero-title" className="display text-[clamp(2.43rem,7.9vw,9.5rem)]" aria-label={profile.headline.join(" ")}>
           {profile.headline.map((l, i) => (
             <span key={i} data-hero-line className={`block ${i === 1 ? "md:pl-[12vw]" : ""}`} aria-hidden="true">
               {i === 2 ? (<>{l.replace("intelligence.", "")}<span className="serif normal-case tracking-[-0.02em] italic" style={{ fontWeight: 400 }}>intelligence.</span></>) : l}
@@ -80,17 +79,10 @@ export default function Hero() {
       </div>
 
       <div className="grid gap-8 md:grid-cols-[1fr_auto] items-end" data-hero-out>
-        <p className="max-w-[38ch] text-[clamp(1.05rem,1.4vw,1.35rem)] leading-snug dim" data-hero-fade>{profile.intro}</p>
+        <p className="max-w-[38ch] text-[clamp(1rem,1.29vw,1.24rem)] leading-snug dim" data-hero-fade>{profile.intro}</p>
         <div className="flex flex-wrap items-center gap-3" data-hero-fade>
           <Magnetic><Link href="/work" className="btn btn--solid" data-cursor="Work">View work</Link></Magnetic>
           <Magnetic><a href={profile.resume} download className="btn" data-cursor="PDF">Download resume</a></Magnetic>
-        </div>
-      </div>
-
-      <div className="absolute left-1/2 bottom-6 -translate-x-1/2" data-hero-out aria-hidden="true">
-        <div className="flex flex-col items-center gap-2 mono dim" data-hero-fade>
-          <span>Scroll</span>
-          <ArrowDown size={14} className="animate-bounce" />
         </div>
       </div>
     </section>

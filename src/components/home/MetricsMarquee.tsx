@@ -42,9 +42,9 @@ export default function MetricsMarquee() {
   );
   const row = items.map(([v, l], i) => (
     <span key={i} className="flex items-baseline gap-4 pr-16">
-      <span className="text-[clamp(3rem,8vw,7.5rem)] font-extrabold tracking-[-0.05em] leading-none">{v}</span>
+      <span className="text-[clamp(2.28rem,6.08vw,5.7rem)] font-extrabold tracking-[-0.05em] leading-none">{v}</span>
       <span className="mono dim whitespace-nowrap">{l}</span>
-      <span className="text-[clamp(2rem,4vw,3.5rem)] text-[var(--signal)] pl-12" aria-hidden="true">✳</span>
+      <span className="text-[clamp(1.72rem,3.44vw,3.01rem)] text-[var(--signal)] pl-12" aria-hidden="true">✳</span>
     </span>
   ));
   return (

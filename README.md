@@ -1,8 +1,8 @@
 # Pratap Mahalingam — Studio Portfolio
 
-An animation-first portfolio: a real-time 3D glass sculpture, pinned and scrubbed scroll scenes, a pinned horizontal project gallery, shared-element transitions into 13 case studies, and tone shifts between sections.
+An animation-first portfolio: an interactive 2D flow field that reacts to the cursor and to scrolling, a scroll guide (section rail and a Next button), pinned and scrubbed scroll scenes, a pinned horizontal project gallery, About in the home scroll path, shared-element transitions into 13 case studies, and tone shifts between sections.
 
-**Stack:** Next.js 16 (App Router, Turbopack) · React 19 · TypeScript · Tailwind CSS v4 · GSAP + ScrollTrigger + SplitText · Lenis · Three.js / React Three Fiber / Drei · Motion · Lucide
+**Stack:** Next.js 16 (App Router, Turbopack) · React 19 · TypeScript · Tailwind CSS v4 · GSAP + ScrollTrigger + SplitText · Lenis · Motion · Lucide
 
 ## Run locally
 
@@ -37,9 +37,9 @@ npx tsc --noEmit && npm run lint && npm run build
 
 ## Fallbacks
 
-- **Reduced motion** (OS setting): no preloader, no pinning, no smooth scroll; the 3D scene is replaced by a still image.
-- **No WebGL, or a slow GPU**: the same still image. `PerformanceMonitor` switches to it if the frame rate stays low.
-- **Touch devices**: native scrolling, a lighter 3D scene and a vertical project stack.
+- **Reduced motion** (OS setting): no preloader, no pinning, no smooth scroll; the flow field is drawn as one still frame.
+- **No WebGL needed**: the flow field is a plain 2D canvas.
+- **Touch devices**: native scrolling, a sparser field and a vertical project stack.
 - **JavaScript disabled**: all content is rendered in the server HTML and stays visible.
 
 ## Deploy (Vercel)

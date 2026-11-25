@@ -17,7 +17,7 @@ export default function CopyEmail({ email }: { email: string }) {
   };
   return (
     <div className="flex flex-wrap items-center gap-4">
-      <a id="email-text" href={`mailto:${email}`} className="text-[clamp(1.6rem,4vw,3.6rem)] font-semibold tracking-[-0.03em] underline decoration-1 underline-offset-[0.15em]" data-cursor="Write">{email}</a>
+      <a id="email-text" href={`mailto:${email}`} className="text-[clamp(1.38rem,3.44vw,3.1rem)] font-semibold tracking-[-0.03em] underline decoration-1 underline-offset-[0.15em]" data-cursor="Write">{email}</a>
       <button type="button" onClick={copy} className="btn !h-10" aria-live="polite">
         <AnimatePresence mode="wait" initial={false}>
           <motion.span key={copied ? "y" : "n"} initial={{ y: 10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -10, opacity: 0 }} transition={{ duration: 0.2 }}>{copied ? "Copied" : "Copy"}</motion.span>

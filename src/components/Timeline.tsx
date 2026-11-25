@@ -30,7 +30,7 @@ export default function Timeline() {
           <span data-dot className="absolute -left-10 top-2 h-[15px] w-[15px] rounded-full bg-[var(--blue)] ring-4 ring-[var(--bg)]" aria-hidden="true" />
           <div data-body>
             <p className="mono dim">{e.when}</p>
-            <h3 className="mt-2 text-[clamp(1.4rem,2.4vw,2.2rem)] font-semibold tracking-[-0.02em] leading-tight">{e.role}</h3>
+            <h3 className="mt-2 text-[clamp(1.2rem,2.06vw,1.89rem)] font-semibold tracking-[-0.02em] leading-tight">{e.role}</h3>
             <p className="dim mt-1">{e.org}</p>
             <ul className="mt-4 grid gap-2 max-w-[60ch]">{e.points.map((pt) => <li key={pt} className="leading-snug">{pt}</li>)}</ul>
           </div>

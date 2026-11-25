@@ -28,11 +28,11 @@ export default function Disciplines() {
     { scope: root },
   );
   return (
-    <section ref={root} data-tone="light" className="wrap py-[18vh]" aria-labelledby="disc-h">
+    <section ref={root} id="focus" data-guide="Focus" data-tone="light" className="wrap py-[18vh]" aria-labelledby="disc-h">
       <p className="mono dim mb-10">(03) <span id="disc-h">Where I work</span></p>
       {rows.map((r) => (
         <div key={r.word} data-row className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] items-end gap-4 border-t hair py-6 md:py-8">
-          <p data-word className="display outline-fill text-[clamp(3rem,10.5vw,12rem)] leading-[0.85]">{r.word}</p>
+          <p data-word className="display outline-fill text-[clamp(2.28rem,7.98vw,9.12rem)] leading-[0.85]">{r.word}</p>
           <p className="dim max-w-[30ch] md:pb-4">{r.note}</p>
         </div>
       ))}

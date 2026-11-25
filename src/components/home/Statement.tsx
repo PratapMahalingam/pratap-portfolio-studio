@@ -22,7 +22,7 @@ export default function Statement() {
   return (
     <section ref={root} data-tone="dark" className="wrap py-[22vh]" aria-label="About in brief">
       <p className="mono dim mb-8">(01) In brief</p>
-      <p data-statement className="max-w-[24ch] text-[clamp(2rem,5.2vw,5.4rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
+      <p data-statement className="max-w-[24ch] text-[clamp(1.52rem,3.95vw,4.1rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
         MBA in AI &amp; Business Analytics. AI research at Mercor. Data science training at the University of Tokyo. Thirteen projects, each with a measured result and code you can read.
       </p>
     </section>

@@ -46,11 +46,11 @@ export default function ProjectCard({ p, index, size = "md" }: { p: Project; ind
       <div className="flex items-start justify-between gap-6 p-5 md:p-6">
         <div className="min-w-0">
           <p className="mono dim">{p.categories.join(" / ")}</p>
-          <h3 className="mt-2 text-[clamp(1.35rem,2vw,1.9rem)] font-semibold leading-[1.05] tracking-[-0.02em]">{p.title}</h3>
+          <h3 className="mt-2 text-[clamp(1.24rem,1.84vw,1.75rem)] font-semibold leading-[1.05] tracking-[-0.02em]">{p.title}</h3>
           <p className="mt-2 dim text-[0.95rem] leading-snug max-w-[42ch]">{p.summary}</p>
         </div>
         <div className="shrink-0 text-right">
-          <p className="metric text-[clamp(1.4rem,2.2vw,2.2rem)] font-bold tracking-[-0.03em]">{p.metric.value}</p>
+          <p className="metric text-[clamp(1.2rem,1.89vw,1.89rem)] font-bold tracking-[-0.03em]">{p.metric.value}</p>
           <p className="mono dim mt-1 max-w-[16ch]">{p.metric.label}</p>
         </div>
       </div>

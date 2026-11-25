@@ -34,11 +34,11 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         <header className="wrap">
           <Link href="/work" className="mono dim inline-flex items-center gap-2 hover:text-[var(--fg)]"><ArrowLeft size={14} /> All work</Link>
           <p className="mono dim mt-10">{String(i + 1).padStart(2, "0")} / {p.categories.join(" / ")}</p>
-          <Reveal as="h1" by="chars" onLoad delay={0.15} className="display mt-4 text-[clamp(2.8rem,8vw,8.5rem)] max-w-[14ch]">{p.title}</Reveal>
+          <Reveal as="h1" by="chars" onLoad delay={0.15} className="display mt-4 text-[clamp(2.13rem,6.08vw,6.46rem)] max-w-[14ch]">{p.title}</Reveal>
           <div className="mt-8 grid gap-6 md:grid-cols-[1fr_auto] items-end">
-            <p className="max-w-[46ch] text-[clamp(1.1rem,1.6vw,1.5rem)] leading-snug dim">{p.summary}</p>
+            <p className="max-w-[46ch] text-[clamp(1.01rem,1.47vw,1.38rem)] leading-snug dim">{p.summary}</p>
             <div className="md:text-right">
-              <p className="metric text-[clamp(3rem,6vw,5.5rem)] font-extrabold tracking-[-0.05em] leading-none">{p.metric.value}</p>
+              <p className="metric text-[clamp(2.28rem,4.56vw,4.18rem)] font-extrabold tracking-[-0.05em] leading-none">{p.metric.value}</p>
               <p className="mono dim mt-2">{p.metric.label}</p>
             </div>
           </div>
@@ -67,8 +67,8 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         </section>
 
         {[
-          { n: "01", h: "Problem", body: <p className="text-[clamp(1.3rem,2.4vw,2.2rem)] leading-[1.2] tracking-[-0.015em] max-w-[34ch]">{p.problem}</p> },
-          { n: "02", h: "Approach", body: <ol className="grid gap-4">{p.approach.map((a, k) => <li key={k} className="grid grid-cols-[2.5rem_1fr] text-[clamp(1.05rem,1.5vw,1.35rem)] leading-snug"><span className="mono dim pt-1">{String(k + 1).padStart(2, "0")}</span>{a}</li>)}</ol> },
+          { n: "01", h: "Problem", body: <p className="text-[clamp(1.12rem,2.06vw,1.89rem)] leading-[1.2] tracking-[-0.015em] max-w-[34ch]">{p.problem}</p> },
+          { n: "02", h: "Approach", body: <ol className="grid gap-4">{p.approach.map((a, k) => <li key={k} className="grid grid-cols-[2.5rem_1fr] text-[clamp(1rem,1.38vw,1.24rem)] leading-snug"><span className="mono dim pt-1">{String(k + 1).padStart(2, "0")}</span>{a}</li>)}</ol> },
         ].map((b) => (
           <section key={b.h} className="wrap mt-24 grid gap-8 md:grid-cols-[14rem_1fr]" data-rise>
             <h2 className="mono dim">({b.n}) {b.h}</h2>
@@ -81,7 +81,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           <div className="grid gap-px bg-[var(--line)] rounded-2xl overflow-hidden sm:grid-cols-2 lg:grid-cols-4">
             {p.evidence.map((e) => (
               <div key={e.label} data-evidence className="bg-[var(--bg)] p-6 md:p-8">
-                <p className="text-[clamp(1.8rem,3vw,2.8rem)] font-bold tracking-[-0.04em] leading-none">{e.value}</p>
+                <p className="text-[clamp(1.55rem,2.58vw,2.41rem)] font-bold tracking-[-0.04em] leading-none">{e.value}</p>
                 <p className="mono dim mt-3">{e.label}</p>
               </div>
             ))}
@@ -102,12 +102,12 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
         <section className="wrap mt-24 grid gap-8 md:grid-cols-[14rem_1fr]" data-rise>
           <h2 className="mono dim">(04) Outcome</h2>
-          <p className="text-[clamp(1.5rem,3vw,2.8rem)] font-semibold leading-[1.1] tracking-[-0.025em] max-w-[28ch]">{p.outcome}</p>
+          <p className="text-[clamp(1.29rem,2.58vw,2.41rem)] font-semibold leading-[1.1] tracking-[-0.025em] max-w-[28ch]">{p.outcome}</p>
         </section>
 
         <Link href={`/work/${next.slug}`} className="group block wrap mt-32 py-16 border-t hair" data-cursor="Next" data-testid="next-project">
           <p className="mono dim">Next project</p>
-          <p className="display mt-4 text-[clamp(2.5rem,8vw,8rem)] transition-transform duration-700 group-hover:translate-x-4">{next.title}</p>
+          <p className="display mt-4 text-[clamp(1.9rem,6.08vw,6.08rem)] transition-transform duration-700 group-hover:translate-x-4">{next.title}</p>
         </Link>
       </article>
       <Footer />

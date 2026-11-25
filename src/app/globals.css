@@ -132,3 +132,10 @@ html[data-tone="light"] .metric { color: var(--blue-deep); }
 }
 /* the bar keeps contrast over any section: a soft backdrop in the current tone */
 [data-testid="nav"] { background: linear-gradient(var(--bg), color-mix(in srgb, var(--bg) 0%, transparent)); }
+
+/* scroll guide: the Next button's arrow nudges downward; the rail gets its own gutter */
+.guide-next__arrow { animation: guide-nudge 1.6s var(--ease-io) infinite; }
+@keyframes guide-nudge { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+@media (min-width: 768px) { #home .wrap { padding-right: calc(var(--pad) + 96px); } }
+/* phones: on the hero the Next button would cover the hero's own buttons */
+@media (max-width: 767px) { .guide-next[data-on-intro] { display: none; } }

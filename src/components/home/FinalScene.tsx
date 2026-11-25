@@ -10,7 +10,7 @@ import { scene } from "@/lib/sceneStore";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-// The closing scene: the page turns blue and the sculpture settles in the centre
+// The closing scene: the page turns blue and the flow field settles into rings
 // (scene.resolve) behind the call to action.
 export default function FinalScene() {
   const root = useRef<HTMLElement>(null);
@@ -22,9 +22,9 @@ export default function FinalScene() {
     { scope: root },
   );
   return (
-    <section ref={root} data-tone="blue" className="relative wrap min-h-[100svh] flex flex-col justify-center py-24" aria-labelledby="cta-h" data-testid="final-scene">
-      <p className="mono dim mb-8">(04) Next step</p>
-      <Reveal as="h2" by="chars" className="display text-[clamp(3rem,9.5vw,10rem)] max-w-[12ch]"><span id="cta-h">Let&apos;s turn data into decisions.</span></Reveal>
+    <section ref={root} id="contact" data-guide="Contact" data-tone="blue" className="relative wrap min-h-[100svh] flex flex-col justify-center py-24" aria-labelledby="cta-h" data-testid="final-scene">
+      <p className="mono dim mb-8">(05) Next step</p>
+      <Reveal as="h2" by="chars" className="display text-[clamp(2.28rem,7.22vw,7.6rem)] max-w-[12ch]"><span id="cta-h">Let&apos;s turn data into decisions.</span></Reveal>
       <p className="mt-8 max-w-[44ch] dim text-lg">Open to roles as a {profile.roles.slice(0, 5).join(", ")} or {profile.roles[5]}, in Dubai or remote.</p>
       <div className="mt-10 flex flex-wrap gap-3">
         <Magnetic><a href={`mailto:${profile.email}`} className="btn btn--solid" data-cursor="Say hi">Email me</a></Magnetic>
