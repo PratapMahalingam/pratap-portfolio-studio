@@ -1,5 +1,7 @@
 # Pratap Mahalingam — Studio Portfolio
 
+**Live:** https://pratap-portfolio-studio-4o3c.vercel.app/
+
 An animation-first portfolio: an interactive 2D flow field that reacts to the cursor and to scrolling, a scroll guide (section rail and a Next button), pinned and scrubbed scroll scenes, a pinned horizontal project gallery, About in the home scroll path, shared-element transitions into 13 case studies, and tone shifts between sections.
 
 **Stack:** Next.js 16 (App Router, Turbopack) · React 19 · TypeScript · Tailwind CSS v4 · GSAP + ScrollTrigger + SplitText · Lenis · Motion · Lucide
