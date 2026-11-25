@@ -4,6 +4,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import gsap from "gsap";
+import { House } from "lucide-react";
+import type Lenis from "lenis";
 import Magnetic from "./Magnetic";
 import { profile } from "@/lib/profile";
 import { EASE } from "@/lib/motion";
@@ -55,6 +57,27 @@ export default function Nav() {
     <>
       <header ref={bar} className="fixed inset-x-0 top-0 z-[120] wrap flex items-center justify-between py-5 text-[var(--fg)] transition-colors duration-700" data-testid="nav">
         <Link href="/" className="font-extrabold tracking-tight text-lg" aria-label="Pratap Mahalingam, home">PRATAP<span className="metric">.</span>M</Link>
+        <div className="flex items-center gap-3 md:gap-10">
+        <Magnetic>
+          <Link
+            href="/"
+            aria-label="Home"
+            aria-current={pathname === "/" ? "page" : undefined}
+            data-cursor="Home"
+            data-testid="home-link"
+            onClick={(e) => {
+              // already home: glide back to the top instead of reloading
+              if (pathname !== "/") return;
+              e.preventDefault();
+              const lenis = (window as unknown as { __lenis?: Lenis }).__lenis;
+              if (lenis) lenis.scrollTo(0, { duration: 1.4 });
+              else window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+            }}
+            className={`grid h-10 w-10 place-items-center rounded-full border transition-colors duration-300 ${pathname === "/" ? "border-[var(--fg)] bg-[var(--fg)] text-[var(--bg)]" : "hair hover:bg-[var(--fg)] hover:text-[var(--bg)]"}`}
+          >
+            <House size={17} strokeWidth={1.8} aria-hidden="true" />
+          </Link>
+        </Magnetic>
         <nav aria-label="Main" className="hidden md:flex items-center gap-10">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="mono relative group" aria-current={pathname.startsWith(l.href) ? "page" : undefined}>
@@ -67,6 +90,7 @@ export default function Nav() {
         <button type="button" className="md:hidden mono h-10 px-4 rounded-full border hair" aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((o) => !o)}>
           {open ? "Close" : "Menu"}
         </button>
+        </div>
       </header>
 
       <AnimatePresence>
