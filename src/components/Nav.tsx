@@ -55,8 +55,8 @@ export default function Nav() {
 
   return (
     <>
-      <header ref={bar} className="fixed inset-x-0 top-0 z-[120] wrap flex items-center justify-between py-5 text-[var(--fg)] transition-colors duration-700" data-testid="nav">
-        <Link href="/" className="font-extrabold tracking-tight text-lg" aria-label="Pratap Mahalingam, home">PRATAP<span className="metric">.</span>M</Link>
+      <header ref={bar} className="fixed inset-x-0 top-0 z-[120] wrap flex items-center justify-between gap-3 py-5 text-[var(--fg)] transition-colors duration-700" data-testid="nav">
+        <Link href="/" className="inline-flex min-h-11 items-center font-extrabold tracking-tight text-[clamp(0.8rem,4vw,1.125rem)] whitespace-nowrap" aria-label="Pratap Mahalingam, home">PRATAP MAHALINGAM</Link>
         <div className="flex items-center gap-3 md:gap-10">
         <Magnetic>
           <Link
@@ -75,7 +75,7 @@ export default function Nav() {
             }}
             className={`grid h-10 w-10 place-items-center rounded-full border transition-colors duration-300 ${pathname === "/" ? "border-[var(--fg)] bg-[var(--fg)] text-[var(--bg)]" : "hair hover:bg-[var(--fg)] hover:text-[var(--bg)]"}`}
           >
-            <House size={17} strokeWidth={1.8} aria-hidden="true" />
+            <House size={17} strokeWidth={1.8} aria-hidden="true" style={pathname === "/" ? { color: "var(--bg)" } : undefined} />
           </Link>
         </Magnetic>
         <nav aria-label="Main" className="hidden md:flex items-center gap-10">
