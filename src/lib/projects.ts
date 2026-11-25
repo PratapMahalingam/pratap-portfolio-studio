@@ -53,7 +53,7 @@ export const projects: Project[] = [
       { value: "0.38 ms", label: "median scoring time" },
     ],
     outcome:
-      "The model reached an F1 of 0.908, cutting false alarms from 28,825 to 81 compared with rules while still catching 86.3% of fraud.",
+      "Cut false alarms from 28,825 to 81 while raising recall from 54.6% to 86.3% (F1 0.908) on 555,719 held-out simulated card transactions, by scoring each transaction in 0.38 ms with a gradient-boosting model on 20 causal per-card features kept in SQLite.",
     cover: "/work/fraud/roc_pr_curves.webp",
     preview: "/work/fraud/fraud_stream.webp",
     figures: [
@@ -62,6 +62,7 @@ export const projects: Project[] = [
       { src: "/work/fraud/confusion_matrix.webp", alt: "Confusion matrix", caption: "Confusion matrix." },
     ],
     links: [gh("fintech-fraud-monitor")],
+    note: "Evaluated on simulated (Sparkov) card transactions, not real bank data. The simulator places most fraud at night; without time-of-day features F1 is 0.849.",
   },
   {
     slug: "biomed-graphrag-evidence",
@@ -86,7 +87,7 @@ export const projects: Project[] = [
       { value: "+0.001", label: "nDCG@10 from the entity graph" },
     ],
     outcome:
-      "Retrieval and reranking delivered the gain; the entity graph, tested fairly against budget-matched and rewired controls, added no measurable improvement.",
+      "Raised nDCG@10 from 0.799 (BM25) to 0.895 on 188 SciFact claims, by building MedCPT dense retrieval with cross-encoder reranking, then showed with budget-matched and rewired-graph controls that an entity graph added no measurable gain (+0.001).",
     cover: "/work/graphrag/pipeline.webp",
     figures: [
       { src: "/work/graphrag/pipeline.webp", alt: "Retrieval pipeline", caption: "The retrieval pipeline." },
@@ -113,10 +114,11 @@ export const projects: Project[] = [
     contribution: "Built the graph models, the rewired-graph null and the evaluation.",
     evidence: [
       { value: "0.551 → 0.592", label: "macro-F1 on unseen donors (p = 0.007)" },
-      { value: "0.493", label: "macro-F1 with a rewired graph (p = 0.0005)" },
+      { value: "0.493", label: "macro-F1 with a rewired graph (real graph better on 12/12 sections, p = 0.0005)" },
       { value: "47,329", label: "Visium spots" },
     ],
-    outcome: "The spatial graph improved annotation, and the rewired-graph control showed the gain comes from real tissue structure.",
+    outcome:
+      "Raised mean macro-F1 for cortical-layer annotation from 0.551 to 0.592 on held-out donors (better on 10 of 12 sections, p = 0.007), by training GraphSAGE on the real spatial graph of 47,329 Visium spots. A degree-preserving rewired graph scored 0.493, so the gain depends on true neighbours.",
     cover: "/work/spatial-gnn/spatial_map_151673.webp",
     figures: [
       { src: "/work/spatial-gnn/spatial_map_151673.webp", alt: "Spatial maps, section 151673", caption: "Spatial maps of section 151673." },
@@ -124,6 +126,7 @@ export const projects: Project[] = [
       { src: "/work/spatial-gnn/boundary_vs_interior.webp", alt: "Boundary vs interior", caption: "Accuracy at layer boundaries and in layer interiors." },
     ],
     links: [gh("spatial-transcriptomics-gnn")],
+    note: "The gain was uneven (+0.006 on one of three donors), and the thin outer layers L1–L2 got worse.",
   },
   {
     slug: "kepler-exoplanet-vetting",
@@ -146,7 +149,8 @@ export const projects: Project[] = [
       { value: "0.969", label: "ROC-AUC with centroid diagnostics" },
       { value: "66% → 95%", label: "centroid-offset false positives detected" },
     ],
-    outcome: "The model's explanations line up with the astronomers' documented vetting criteria, without leaking the labels.",
+    outcome:
+      "Separated Kepler planet candidates from false positives at 0.936 ROC-AUC on physical parameters alone across 9,564 objects, by training LightGBM without the vetting flags (which alone reproduce 98.9% of labels) and grouping cross-validation by host star. Adding centroid diagnostics raised this to 0.969.",
     cover: "/work/kepler/shap_summary_physical.webp",
     figures: [
       { src: "/work/kepler/shap_summary_physical.webp", alt: "SHAP summary, physical model", caption: "SHAP summary for the physical-parameter model." },
@@ -154,13 +158,14 @@ export const projects: Project[] = [
       { src: "/work/kepler/confusion_matrix.webp", alt: "Confusion matrices", caption: "Confusion matrices." },
     ],
     links: [gh("kepler-exoplanet-detection")],
+    note: "Centroid diagnostics also fed the original vetting, so the 0.969 model is partly circular; the physical-only model is the cleaner test.",
   },
   {
     slug: "proteingym-fitness-prediction",
     title: "ProteinGym Fitness Prediction",
     kicker: "Protein language models",
     categories: ["AI/ML", "Research"],
-    metric: { value: "0.412", label: "Spearman ρ, from 0.203" },
+    metric: { value: "0.412", label: "Spearman ρ, vs 0.332 baseline" },
     summary: "Predicting mutation effects on proteins the model has never seen.",
     problem:
       "A model fits a deep mutational scan easily when mutants of the same protein appear in training and test. The real question is whether it generalises to proteins held out entirely.",
@@ -172,11 +177,12 @@ export const projects: Project[] = [
     stack: ["Python", "ESM-2", "Ridge regression"],
     contribution: "Built the held-out-protein evaluation and the models.",
     evidence: [
-      { value: "0.203 → 0.412", label: "mean Spearman ρ" },
+      { value: "0.332 → 0.412", label: "mean Spearman ρ over a substitution-only baseline" },
       { value: "201", label: "assays" },
       { value: "644,457", label: "mutants, 173 proteins" },
     ],
-    outcome: "Mean Spearman ρ doubled on unseen proteins under a strict held-out split.",
+    outcome:
+      "Predicted mutation effects on unseen proteins at mean Spearman ρ 0.412 across 201 assays, against 0.332 for a substitution-only baseline and 0.203 for zero-shot ESM-2, by training ridge regression on ESM-2 embeddings and masked-marginal scores with five-fold protein-held-out cross-validation.",
     cover: "/work/proteingym/ridge_vs_zero_shot.webp",
     figures: [
       { src: "/work/proteingym/ridge_vs_zero_shot.webp", alt: "Ridge vs zero-shot per assay", caption: "Ridge regression against zero-shot scores, per assay." },
@@ -206,7 +212,8 @@ export const projects: Project[] = [
       { value: "p ≤ 0.001", label: "1,000 shuffles" },
       { value: "8,128", label: "connected pairs" },
     ],
-    outcome: "Synaptically connected neurons respond more similarly than chance, even after controlling for degree and proximity.",
+    outcome:
+      "Showed that synaptically connected neurons in mouse visual cortex respond slightly more alike than chance (mean r 0.071 vs 0.053 under a proximity-matched null, p ≤ 0.001), by re-analysing 8,128 connected pairs from public MICrONS data against 1,000 degree-preserving and proximity-matched shuffles.",
     cover: "/work/microns/connectivity_graph.webp",
     figures: [
       { src: "/work/microns/connectivity_graph.webp", alt: "Connectivity graph", caption: "The connectivity graph." },
@@ -214,6 +221,7 @@ export const projects: Project[] = [
       { src: "/work/microns/similarity_distributions.webp", alt: "Similarity distributions", caption: "Response-similarity distributions." },
     ],
     links: [gh("microns-structure-function")],
+    note: "Small effect (Cliff's δ ≈ 0.06). An independent re-analysis consistent with Ding et al. (2025, Nature), not a new discovery.",
   },
   {
     slug: "eeg-movement-decoding",
@@ -236,12 +244,14 @@ export const projects: Project[] = [
       { value: "0.77", label: "ROC-AUC" },
       { value: "p ≈ 0.01", label: "permutation test" },
     ],
-    outcome: "The decoder generalises to unseen subjects well above chance.",
+    outcome:
+      "Classified rest vs. hand movement in unseen subjects at 68.7% accuracy (ROC-AUC 0.77, chance 49.7%, permutation p ≈ 0.01), by building an MNE-Python pipeline with 256 band-power features and logistic regression, using subject-wise cross-validation across 20 subjects.",
     cover: "/work/eeg/results.webp",
     figures: [
       { src: "/work/eeg/results.webp", alt: "Per-subject accuracy, confusion matrix and mu-band topography", caption: "Per-subject accuracy, confusion matrix and mu-band topography." },
     ],
     links: [gh("neuro-eeg-classifier")],
+    note: "Real (not imagined) movement; muscle artifacts in the 30–45 Hz band were not ruled out.",
   },
   {
     slug: "motor-cortex-spike-trains",
@@ -251,7 +261,7 @@ export const projects: Project[] = [
     metric: { value: "64%", label: "direction-selective, vs 4%" },
     summary: "Finding the plan for a movement in single neurons, before the movement happens.",
     problem:
-      "In a delayed-response task, a mouse feels a pole, waits, then licks left or right on a go cue. The question is how many motor-cortex neurons already encode the choice during the wait.",
+      "In a delayed-response task, a mouse feels a pole, waits, then licks left or right on a go cue. The question is how many motor-cortex neurons already fire differently for lick-left and lick-right trials during the wait.",
     approach: [
       "Analysed spike-sorted recordings from the DANDI Archive (DANDI:000006).",
       "Compared direction selectivity in the pre-movement delay against baseline.",
@@ -264,7 +274,8 @@ export const projects: Project[] = [
       { value: "4%", label: "selective at baseline" },
       { value: "26.8 h", label: "of recordings, 53 sessions" },
     ],
-    outcome: "Most motor-cortex neurons carry the upcoming choice before any movement starts.",
+    outcome:
+      "Found that 64% of 1,073 ALM units encode the upcoming lick direction during the pre-movement delay, against 4% at baseline, by comparing lick-left and lick-right firing rates (Mann–Whitney U, p < 0.01) across 26.8 hours of spike-sorted recordings from 53 DANDI sessions.",
     cover: "/work/motor-cortex/raster_psth.webp",
     figures: [
       { src: "/work/motor-cortex/raster_psth.webp", alt: "Spike raster and PSTH of one ALM neuron", caption: "Raster and PSTH of one neuron, split by lick direction." },
@@ -272,6 +283,7 @@ export const projects: Project[] = [
       { src: "/work/motor-cortex/condition_comparison.webp", alt: "Delay vs baseline comparison", caption: "Delay against baseline, and selectivity over time." },
     ],
     links: [gh("neuro-dandi-spike-trains")],
+    note: "Correct trials only, so planned movement and remembered pole position cannot be separated.",
   },
   {
     slug: "neuron-morphology",
@@ -279,7 +291,7 @@ export const projects: Project[] = [
     kicker: "Dendritic branching across brain regions",
     categories: ["Research", "Analytics"],
     metric: { value: "4–5×", label: "more branch points" },
-    summary: "How differently neurons branch in the hippocampus, neocortex and cerebellum.",
+    summary: "How differently mouse neurons branch in the hippocampus, neocortex and cerebellum.",
     problem: "Neuron shapes differ by region, but the differences need measuring with corrected statistics rather than judging by eye.",
     approach: [
       "Pulled 3D reconstructions from NeuroMorpho.Org through its REST API.",
@@ -293,7 +305,8 @@ export const projects: Project[] = [
       { value: "31.5–38", label: "median for pyramidal cells" },
       { value: "p < 0.001", label: "Holm-corrected" },
     ],
-    outcome: "Purkinje cells have about 4–5 times more branch points than pyramidal cells, across 118 reconstructions.",
+    outcome:
+      "Showed that mouse Purkinje cells have about 4–5× more dendritic branch points than pyramidal cells (median 152.5 vs 31.5–38, Holm-corrected p < 0.001), by extracting features from 118 NeuroMorpho.Org reconstructions from 47 labs and validating them against NeuroMorpho's L-Measure.",
     cover: "/work/neuron-morphology/hero_gallery.webp",
     figures: [
       { src: "/work/neuron-morphology/hero_gallery.webp", alt: "Dendritic arbors drawn on a common micrometre scale", caption: "Dendritic arbors of CA1 pyramidal, neocortical pyramidal and Purkinje cells, to scale." },
@@ -301,6 +314,7 @@ export const projects: Project[] = [
       { src: "/work/neuron-morphology/sholl.webp", alt: "Sholl profiles by region", caption: "Sholl profiles by region." },
     ],
     links: [gh("neuro-neuromorpho-analysis")],
+    note: "Region is confounded with cell type (Purkinje vs pyramidal), and 28 of 40 Purkinje cells come from one lab.",
   },
   {
     slug: "allen-brain-atlas",
@@ -322,7 +336,8 @@ export const projects: Project[] = [
       { value: "p = 0.014", label: "six donors" },
       { value: "17", label: "brain regions" },
     ],
-    outcome: "BDNF expression is higher in the hippocampus than the neocortical average.",
+    outcome:
+      "Identified hippocampal BDNF expression 0.78 log2 units above the neocortical average (paired t-test p = 0.014, six donors), by mapping BDNF, APOE and GRIN2A across 17 regions from 3,702 Allen Human Brain Atlas microarray samples accessed through the Allen SDK.",
     cover: "/work/allen-brain-atlas/heatmap_gene_by_region.webp",
     figures: [
       { src: "/work/allen-brain-atlas/heatmap_gene_by_region.webp", alt: "Heatmap of BDNF, APOE and GRIN2A expression across 17 brain regions", caption: "BDNF, APOE and GRIN2A across 17 regions." },
@@ -349,7 +364,8 @@ export const projects: Project[] = [
       { value: "3,000+", label: "incident records" },
       { value: "15", label: "variables" },
     ],
-    outcome: "Interpretable incident patterns presented through dashboards, with model findings and limitations reported.",
+    outcome:
+      "Turned 3,000+ aviation incident records across 15 variables into interpretable trend reports, by cleaning and analysing them in Dataiku, building interactive dashboards and a live REST API, and reporting which indicators were predictive and where they fell short.",
     art: "flight",
     figures: [],
     links: [{ label: "Watch the demo", href: "https://youtu.be/nUHpNds2YQ0" }],
@@ -370,7 +386,8 @@ export const projects: Project[] = [
     stack: ["Regression", "Forecasting", "Cost-driver analysis"],
     contribution: "Sole author of the dissertation.",
     evidence: [{ value: "22,000+", label: "breach records validated" }],
-    outcome: "Business insights on economic impact, limitations and risk-mitigation priorities.",
+    outcome:
+      "Explained the financial exposure behind data breaches from 22,000+ validated published breach records, by cleaning and checking the data and applying regression, forecasting and cost-driver analysis.",
     art: "breach",
     figures: [],
     links: [],
@@ -392,7 +409,8 @@ export const projects: Project[] = [
     stack: ["CAPM", "Ratio analysis", "Benchmarking"],
     contribution: "Prepared the research, valuation and presentation.",
     evidence: [{ value: "≈0.95", label: "estimated beta" }],
-    outcome: "A supported academic buy recommendation and presentation.",
+    outcome:
+      "Built a supported academic buy recommendation on Sony Group, using CAPM with an estimated beta of about 0.95, by analysing financial ratios and valuation assumptions and benchmarking against the Nikkei 225.",
     art: "equity",
     figures: [],
     links: [],
