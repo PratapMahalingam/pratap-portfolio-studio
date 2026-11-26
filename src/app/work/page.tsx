@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 import WorkGallery from "@/components/WorkGallery";
 import Footer from "@/components/Footer";
 
-export const metadata: Metadata = { title: "Work", description: "Thirteen projects in finance, data analytics, AI and research, each with verified results and code." };
+export const metadata: Metadata = { title: "Work", description: "Thirteen projects in finance, data analytics, AI and research, each with a measured result; ten with public code." };
 
 export default function WorkPage() {
   return (

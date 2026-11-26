@@ -35,7 +35,7 @@ npx tsc --noEmit && npm run lint && npm run build
 | The 13 projects (text, metrics, figures, links) | `src/lib/projects.ts` |
 | Project figures | `public/work/<slug>/` |
 | Resume PDF | `public/Pratap_Mahalingam_Resume.pdf` |
-| Social preview image | `public/og-image.jpg` |
+| Social preview image | `public/og-portfolio.jpg` (1200×627) |
 
 ## Fallbacks
 

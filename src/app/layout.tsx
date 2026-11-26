@@ -13,9 +13,21 @@ export const metadata: Metadata = {
       (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000"),
   ),
   title: { default: "Pratap Mahalingam | Finance × Data × AI", template: "%s | Pratap Mahalingam" },
-  description: "Pratap Mahalingam connects finance, data and intelligence. MBA in AI & Business Analytics; thirteen projects with verified results and code.",
-  openGraph: { title: "Pratap Mahalingam | Finance × Data × AI", description: "I connect finance, data & intelligence.", images: ["/og-image.jpg"], type: "website" },
-  twitter: { card: "summary_large_image" },
+  description: "Pratap Mahalingam connects finance, data and intelligence. MBA in AI & Business Analytics; thirteen case studies with measured results.",
+  openGraph: {
+    type: "website",
+    siteName: "Pratap Mahalingam",
+    title: "Pratap Mahalingam | Finance × Data × AI",
+    description: "Portfolio of Pratap Mahalingam: thirteen finance, data and AI case studies, each with a measured result. MBA in AI & Business Analytics, Dubai.",
+    locale: "en_GB",
+    images: [{ url: "/og-portfolio.jpg", width: 1200, height: 627, alt: "Pratap Mahalingam, Finance × Data × AI: data lines flowing from a price chart into a neural network" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pratap Mahalingam | Finance × Data × AI",
+    description: "Thirteen finance, data and AI case studies, each with a measured result.",
+    images: [{ url: "/og-portfolio.jpg", alt: "Pratap Mahalingam, Finance × Data × AI" }],
+  },
   icons: { icon: "/icon.svg" },
 };
 export const viewport: Viewport = { themeColor: "#07080d", width: "device-width", initialScale: 1, viewportFit: "cover" };
