@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: "Pratap Mahalingam | Finance × Data × AI",
     description: "Portfolio of Pratap Mahalingam: thirteen finance, data and AI case studies, each with a measured result. MBA in AI & Business Analytics, Dubai.",
     locale: "en_GB",
-    images: [{ url: "/og-portfolio.jpg", width: 1200, height: 627, alt: "Pratap Mahalingam, Finance × Data × AI: data lines flowing from a price chart into a neural network" }],
+    images: [{ url: "/og-portfolio.jpg", width: 1200, height: 627, alt: "Pratap Mahalingam, Finance × Data × AI: a field of short strokes scattering around a moving cursor" }],
   },
   twitter: {
     card: "summary_large_image",
